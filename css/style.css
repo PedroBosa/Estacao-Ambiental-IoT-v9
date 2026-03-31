@@ -337,15 +337,8 @@ canvas {
   #info-panel,
   #legend,
   #controls {
-    left: 14px;
-    right: 14px;
-    width: auto;
+    display: none !important;
   }
-
-  #title-bar { top: max(14px, env(safe-area-inset-top)); }
-  #info-panel { top: auto; bottom: max(14px, env(safe-area-inset-bottom)); max-height: 34vh; }
-  #legend { display: none; }
-  #controls { display: none; }
 }
 
 /* ══════════════════════════════════════════════════
