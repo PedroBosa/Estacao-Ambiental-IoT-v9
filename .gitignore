@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Local Node (in case it's ever added)
+node_modules/
+npm-debug.log*
+
+# Git (not needed but good practice)
+*.log

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estação Ambiental IoT — Esquema 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── UI Overlay ── -->
+<div id="title-bar">
+  <div class="panel-kicker">Arquitetura de Campo</div>
+  <h1>Estação Ambiental IoT</h1>
+  <p>Floriano, PI · Visualização da topologia de sensores, energia e telemetria em uma única cena operacional.</p>
+  <div class="title-meta">
+    <span class="meta-pill">10 sensores</span>
+    <span class="meta-pill">LoRa 915 MHz</span>
+    <span class="meta-pill">I²C + RS485 + I2S</span>
+    <span class="meta-pill">Payload 52 B</span>
+  </div>
+</div>
+
+<div id="info-panel">
+  <div class="panel-kicker">Inspeção Técnica</div>
+  <h2 id="panel-title">Selecione um componente</h2>
+  <div class="detail" id="panel-detail">Rotacione a cena, aproxime com a roda do mouse e clique em um módulo para abrir os detalhes técnicos e os barramentos envolvidos.</div>
+</div>
+
+<div id="legend">
+  <div class="panel-kicker">Barramentos</div>
+  <h3>Mapa de sinais</h3>
+  <div class="leg-row"><div class="leg-color" style="background:#00c8ff"></div>I²C (SDA/SCL)</div>
+  <div class="leg-row"><div class="leg-color" style="background:#ffa000"></div>RS485 Modbus</div>
+  <div class="leg-row"><div class="leg-color" style="background:#b400ff"></div>I2S Áudio</div>
+  <div class="leg-row"><div class="leg-color" style="background:#ff3c3c"></div>IRQ / GPIO</div>
+  <div class="leg-row"><div class="leg-color" style="background:#00ff64"></div>Alimentação 12V</div>
+  <div class="leg-row"><div class="leg-color" style="background:#ffff00"></div>UART Serial</div>
+  <div class="leg-row"><div class="leg-color" style="background:#ff00c8"></div>LoRa RF 915MHz</div>
+</div>
+
+<div id="controls">
+  <div class="panel-kicker">Camadas</div>
+  <h3>Filtros de visualização</h3>
+  <div class="bus-toggle is-primary"><input type="checkbox" id="tog-labels" checked onchange="toggleLabels()"><label for="tog-labels">Labels e nomes</label></div>
+  <div class="bus-toggle is-primary"><input type="checkbox" id="tog-handles" checked onchange="toggleHandles()"><label for="tog-handles">Exibir Nós/Bordas</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-i2c" checked onchange="toggleBus('i2c')"><label for="tog-i2c"><span class="bus-dot" style="background:#00c8ff;box-shadow:0 0 6px #00c8ff88"></span>I²C</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-rs485" checked onchange="toggleBus('rs485')"><label for="tog-rs485"><span class="bus-dot" style="background:#ffa000;box-shadow:0 0 6px #ffa00088"></span>RS485</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-i2s" checked onchange="toggleBus('i2s')"><label for="tog-i2s"><span class="bus-dot" style="background:#b400ff;box-shadow:0 0 6px #b400ff88"></span>I2S</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-irq" checked onchange="toggleBus('irq')"><label for="tog-irq"><span class="bus-dot" style="background:#ff3c3c;box-shadow:0 0 6px #ff3c3c88"></span>IRQ</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-pwr" checked onchange="toggleBus('pwr')"><label for="tog-pwr"><span class="bus-dot" style="background:#00ff64;box-shadow:0 0 6px #00ff6488"></span>Power</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-uart" checked onchange="toggleBus('uart')"><label for="tog-uart"><span class="bus-dot" style="background:#ffff00;box-shadow:0 0 6px #ffff0088"></span>UART</label></div>
+  <div class="bus-toggle"><input type="checkbox" id="tog-lora" checked onchange="toggleBus('lora')"><label for="tog-lora"><span class="bus-dot" style="background:#ff00c8;box-shadow:0 0 6px #ff00c888"></span>LoRa</label></div>
+  
+  <div style="margin-top: 18px;">
+    <button id="btn-print-8k" onclick="take8kScreenshot()" style="width: 100%; padding: 12px; background: rgba(125, 197, 255, 0.15); border: 1px solid rgba(125, 197, 255, 0.4); color: #d9e8ff; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 197, 255, 0.25)'" onmouseout="this.style.background='rgba(125, 197, 255, 0.15)'">Tirar Print 8K</button>
+  </div>
+</div>
+
+<!-- ── Showcase Info Card ── -->
+<div id="showcase-info">
+  <div class="si-name" id="si-name"></div>
+  <div class="si-desc" id="si-desc"></div>
+  <div class="si-tags" id="si-tags"></div>
+</div>
+
+<!-- ── Dependências (CDN) ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<!-- ── Core ── -->
+<script src="js/core/materials.js"></script>
+<script src="js/core/primitives.js"></script>
+
+<!-- ── Componentes 3D ── -->
+<script src="js/components/heltec.js"></script>
+<script src="js/components/sen66.js"></script>
+<script src="js/components/anemometer.js"></script>
+<script src="js/components/sensors.js"></script>
+<script src="js/components/weather.js"></script>
+<script src="js/components/power.js"></script>
+<script src="js/components/dashboard.js"></script>
+<script src="js/components/boards.js"></script>
+
+<!-- ── Dados e Cena ── -->
+<script src="js/data/components-data.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/interaction.js"></script>
+<script src="js/showcase.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
