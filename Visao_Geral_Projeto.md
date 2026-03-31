@@ -72,4 +72,27 @@ O ciclo se fecha em um Dashboard da plataforma central da Defesa Civil / Meio Am
 1.  **Mapas de Calor Pluviais Livres**: Interpola os nós e avisa quais esquinas da metrópole estão ilhadas sob a enxurrada.
 2.  **Alarmes Autônomos em APIs e Sirenes**: Se a "Previsão + Leitura Instantânea de Raio + Acúmulo no Solo" passar de determinado limiar (Exemplo de Threshold ou Webhook), o Dashboard prefeitura avisa o servidor que aciona APIs do Whatsapp das comunidades de ribeirinhos ou aciona as Sirenes Visuais no estádio municipal em alerta para temporal perigoso.
 
-Isso é, em essência, o que uma "Data-Driven Smart City" é. Mutações visuais na cidade inteira guiadas através do pulso cardíaco real e on-site de hardwares resilientes movidos a sol e telecomunicação de espectro livre.
+---
+
+## 6. O Aplicativo Cidadão: Mapa e Dashboard Interativo
+
+Para garantir que os dados beneficiem não apenas a governança, mas a população direta, o projeto possui um **Aplicativo Mobile Dedicado** que leva a telemetria à palma da mão.
+
+*   **Mapa Interativo Local**: Uma interface cartográfica (estilo Google Maps) exibindo os *pins* de todas as Bases e Sensores instalados pela cidade. Visualmente, manchas de cores indicam a dinâmica do clima (ex: uma nuvem virtual avançando na aba de Chuva).
+*   **Aba Exclusiva de Sensores**: Uma dashboard pública padrão onde o morador comum pode consultar o histórico e o dado bruto ao vivo de toda a cidade: "Qual é a Umidade Crítica no Centro neste exato minuto? O ar já ficou suportável na Avenida principal?".
+*   **Camadas de Filtro Preditivo**: Menus de fácil acesso no app para as principais frentes de impacto civil: Alerta de Raios, Índice de Incidência UV, Poeira/Fumaça (VOCs), Risco de Alagamento e Escassez de Umidade. Assim, o app substitui a previsão do tempo genérica do celular por *dados táticos reais de quarteirões*.
+
+---
+
+## 7. A Revolução do Crowdsourcing: O "Sensor Residencial"
+
+O projeto pode crescer infinitamente rápido através da colaboração popular, e para isso surge a ideia estratégica da **Estação Lite Residencial**.
+
+*   **A Ideia de Negócio**: Você oferece uma versão "Lite" (comercial, menor e mais acessível) do sistema para que os próprios moradores a comprem. Essa caixinha compacta é projetada esteticamente para varandas externas e quintais.
+*   **O Hardware Residencial (Versão Lite)**: Sem precisar do sistema autônomo solar industrial e sem todos os pluviômetros, essa versão operaria apenas no essencial: Um sensor de Qualidade do Ar / Temperatura / Umidade (BME690) e de Intensidade UV (LTR390). O morador liga o dispositivo numa tomada externa e no *Wi-Fi de sua própria casa*.
+*   **A Ideia do Ganho-Duplo (Win-Win)**:
+    1.  **O Quintal Inteligente**: O morador que instala a versão lite ganha o benefício dentro do app de ter o clima do "Seu Próprio Quintal". O aplicativo avisa ao morador exclusivamente: *"A fumaça tóxica acabou de chegar na sua rua, feche as janelas"* ou *"Sua estufa bateu UV perigoso"*.
+    2.  **Contribuição para a Malha da Cidade**: Por trás das cortinas (sob concordância), essa miniestação residencial cede anonimamente os dados locais para a nuvem global. 
+*   **O Impacto (Crowdsensing Neural)**: Onde a prefeitura poderia instalar as "15 Estações Base Industriais", a população injeta centenas de Estações Residenciais de forma orgânica. A malha meteorológica de Floriano se tornaria imensa e hiperfocal (casa a casa, quarteirão a quarteirão), sem investimento massivo de infraestrutura pública, criando uma rede de *Smart City* movida pelos próprios cidadãos.
+
+Isso é, em essência, o ápice da estratégia IoT: Mutações visuais na cidade inteira guiadas pelo pulso cardíaco contínuo de hardwares governamentais *somados à comunidade civil* engajada (Crowdsensing) alimentando um aplicativo que antecipa o clima.
