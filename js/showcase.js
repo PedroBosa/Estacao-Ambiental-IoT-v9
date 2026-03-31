@@ -1381,11 +1381,11 @@
   function buildUI() {
     if (document.getElementById('showcase-panel')) return;
 
-    // Botão toggle — inserir no painel de controles
-    var controlsPanel = document.getElementById('controls');
+    // Botão toggle — inserir no title-bar para ficar visível no mobile
+    var controlsPanel = document.getElementById('title-bar');
     if (controlsPanel) {
       var btnWrap = document.createElement('div');
-      btnWrap.style.marginTop = '8px';
+      btnWrap.style.marginTop = '12px';
       btnWrap.innerHTML = '<button id="showcase-toggle" onclick="window.Showcase.toggle()">🎬 Modo Pitch</button>';
       controlsPanel.appendChild(btnWrap);
     }
